@@ -1,37 +1,69 @@
 # Personas
 
-**End User**
+Throughout this documentation, the following personas are used to represent interaction with the standard and/or with entities defined by the standard.
 
-Within the industrial automation market interactions are business to business operations. Meaning, end user means the business organization within the transaction. Any user within a company that has access to the Margo compliant application or devices. 
+## Persona Relationships
+![Persona Relationships](./assets/persona-relationships.png)
 
-**Application Developer** 
+## Categories
 
-Application developer persona represents an entity that utilizes the Margo standard to construct their application. By utilizing the Margo standard, the developer can focus on differentiation while inheriting the advantages of the Margo ecosystem.  
+These categories group common personas together under a shared goal or role. These categories will be used in other documentation to provide grouping and clarity where appropriate.
 
-**Application Marketplace Provider**
+### End Users
+- Consumes products provided by the suppliers
+- Evaluates the best-in-class products offered by the suppliers
+- Assembles multiple vendor's products into a productive ecosystem
 
-This Marketplace provider is a transactional software that is provided to End Users to browse available applications and gain access via purchasing the software.  
+### Suppliers
+- Contributes to the Margo specification for their component
+- Builds products aligned to the Margo standard
+- Markets and sells their products to end users
 
-Note:
-Application Marketplaces are out of scope for Project Margo. However, Margo provides guidelines around content required within the Application Package that is utilized by Marketplaces.  
+## Persona Definitions
 
-**Workload Orchestration Vendor** 
+These persona definitions represent individual entities with specified use cases and requirements, aligned with the other personas in their category.
 
-The Workload Orchestration Vendor provides End Users with the infrastructure to manage applications along with Kubernetes Node and Node Cluster enrollment and management.   
+### End Users
 
-**Device Owner**
-The Device Owner within Project Margo is responsible for meeting the requirements outlined within the device requirements section.
+End users consume products and technologies from the suppliers to drive business continuity and efficiency
 
-[Device Requirements](../device-interoperability/device-requirements.md)
+#### OT User
 
-**Device Manufacturer**
+Consumer of functionality provided by the application vendors to run critical and non-critical business functions, or to improve business efficiency
 
-The Device Manufacturer within Project Margo is responsible for providing hardware that complies with the Project Margo device requirements that enable End Users within the Margo ecosystem. The Device Manufacturer is responsible for managing the device's lifecycle for the End-User. An additional option is for the Manufacturer to contract a Device Integrator to manage the lifecycle for the End-User. 
+#### IT Service Provider
 
-**Device Integrator**
+Provides "IT-like" services, such as connectivity, backup and restore, automation, security and auditing, etc, at edge sites
 
-The Device Integrator within Project Margo is responsible for transforming a generic device into a Project Margo device. Once the device is Margo compliant, the Device Integrator is responsible for managing the device's lifecycle for the End-User.
+#### End User Architect
 
-**Device Orchestration Vendor**
+Creates and enforces standards across deployment locations or sites for greater supportability and consistency
 
-The Device Orchestration Vendor provides End Users with the service to manage their Edge Devices lifecycle within the Margo ecosystem.  
+#### Integrator
+
+Optional persona, external to the organization of the other end user personas, but tasked with assembling and installing hardware and software provided by the suppliers
+
+### Suppliers
+
+Suppliers provides hardware or software that's evaluated and deployed by the end users
+
+#### Workload Supplier
+
+Provides an application that performs some desired function, such as computer vision, software-defined control, etc, which is deployed to devices by an orchestrator
+
+#### Orchestrator Supplier
+
+Provides a software package that ingests application definitions into a catalog, and allows an end user to deploy that application to devices
+
+#### Device Supplier
+
+Provides hardware resources, such as CPU and memory, along with lifecycle support, such as firmware and BIOS updates
+
+#### Platform Supplier
+
+Provides operating system level software to abstract hardware resources, and optionally, orchestration software on top of the the operating system layer
+
+## Notes
+
+- Suppliers can assume the role of multiple personas, for example: if the organization provides hardware and platform software
+- End users can assume the role of multiple personas, for example: an integrator could be tasked with the end user architect role, along with the integrator role, in a "design and deploy" mindset
