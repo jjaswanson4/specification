@@ -67,3 +67,4 @@ Provides operating system level software to abstract hardware resources, and opt
 
 - Suppliers can assume the role of multiple personas, for example: if the organization provides hardware and platform software
 - End users can assume the role of multiple personas, for example: an integrator could be tasked with the end user architect role, along with the integrator role, in a "design and deploy" mindset
+- Other personas to be added as requested or required
