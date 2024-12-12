@@ -63,8 +63,30 @@ Provides hardware resources, such as CPU and memory, along with lifecycle suppor
 
 Provides operating system level software to abstract hardware resources, and optionally, orchestration software on top of the the operating system layer
 
+## Multiple Personas per Entity
+
+In some cases, a single entity, such as a company or organization, may play multiple roles. Below are a few examples of this with some visualizations.
+
+### Combination of Device Supplier and Platform Supplier
+
+A supplier may be both the device supplier (the underlying hardware) and the platform provider (providing an operating system), selling a "ready to deploy" offering for consumption by end users:
+
+![Multiple Personas - Device Supplier and Platform Supplier](./assets/multiple-personas-device-platform.png)
+
+> Note:
+>
+> This diagram is a subset of the diagram above, with modifications for the combined personas of device supplier and platform supplier
+
+### Combination of Workload Supplier and OT User
+
+A persona in the end user category, such as an OT user, could also internally develop an application, and leverage the Margo specification to ease deployment to devices in their environment:
+
+![Multiple Personas - OT User and Workload Supplier](./assets/multiple-personas-ot-user-workload.png)
+
+> Note:
+>
+> This diagram is a subset of the diagram above, with modifications for the combined personas of OT user and workload supplier
+
 ## Notes
 
-- Suppliers can assume the role of multiple personas, for example: if the organization provides hardware and platform software
-- End users can assume the role of multiple personas, for example: an integrator could be tasked with the end user architect role, along with the integrator role, in a "design and deploy" mindset
 - Other personas to be added as requested or required
