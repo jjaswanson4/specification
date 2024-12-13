@@ -13,6 +13,7 @@ Current groups:
 - [Agents](#agents)
 - [Devices](#devices)
 - [Fleet Managers and Functionality](#fleet-managers-and-functionality)
+- [Interfaces and Interoperability]()
 
 ## Applications and their Sources
 
@@ -48,6 +49,12 @@ Where and how an Application Repository is run is outside of the scope of Margo,
 - On the public internet
 - Added on to a workload fleet manager software package
 
+### Application Requirement
+
+An application requirement is an element that is foundational to enabling the execution of an application. It could be a piece of hardware, a specific funtion provided by an operating system or platform, or just general capacity for the application to run on a device.
+
+The agents are responsible for relaying device information, such as capabilities and capacity, back to their respective managers, and the workload fleet manager uses that information to ensure application requirements are met before a deployment is placed.
+
 ## Agents
 
 ### Workload Orchestration Agent
@@ -70,11 +77,13 @@ Device Orchestration Agents are agnostic to the class or type of device: if only
 
 ### Device
 
-A device is a combination of hardware, provided by a device supplier, an operating system (either general purpose or specialized) that abstracts the underlying hardware resources for consumption by software, a workload orchestration agent, to handle application deployments from a workload fleet manager, and a runtime to run the specified software.
+A device is a combination of hardware, provided by a device supplier, an operating system (either general purpose or specialized) that abstracts the underlying resources for consumption by software, a workload orchestration agent, to handle application deployments from a workload fleet manager, and a runtime to run the specified software.
 
 Margo currently defines two deployment profiles: helm-based and docker/podman-based, which require either a kubernetes spec-compliant platform, or docker/podman capabilities, respectively.
 
 Devices can be standalone single nodes, or clusters of nodes, depending on the reqirements of the end user and the application, as long as the above conditions are met. Architecture of devices, such as multi-node clusters, redundancy and failover, high availablility, etc, are out of scope for Margo.
+
+Devices can also be virtualized, where a underlying platform presents capacity as virtual hardware to be consumed by an operating system, and optionally, a platform.
 
 ## Fleet Managers and Functionality
 
@@ -92,7 +101,33 @@ A Device Fleet Manager is a software package, provided by an orchestrator suppli
 
 In addition, a Device Fleet Manager is responsible for maintaining state and capability information for devices, including the ability for device information to be updated as devices change.
 
-Device Fleet Managers also allow for grouping, visualization, and tagging of devices by end users, as to help drive application deployments. 
+Device Fleet Managers also allow for grouping, visualization, and tagging of devices by end users, as to help drive application deployments.
+
+### Fleet
+
+A fleet represents all entities within a fleet manager that are under management. This concept allows for wide-scale changes to be applied, in bulk, for purposes such as policy enforcement. A manager automatically adds new entities to its fleet when they are created, and removes them when they are deleted.
+
+Fleets represent the "lowest priority" when a manager applies customizations or policies.
+
+### Division
+
+A division is a sub-group of a fleet, allowing for grouping of entities under management along logical boundries. This allows for more fine-grained control against managed entities, while still allowing for actions to be taken against a potentially large number of managed entities.
+
+Fleets and divisions have a zero-to-many relationship: a fleet may contain zero to many divisions, however each division is only ever a member of one fleet.
+
+Divisions represent the "middle priority" when a manager applies customizations or policies, first applying the fleet policies, then the division policies. Should overlapping customizations or policies be found, the division policy overrules the fleet policy.
+
+The end user persona category is responsible for divison membership, according to organizational requirements.
+
+### Squadron
+
+A squadron is also a sub-group of a fleet, again allowing for grouping of entities under management along logical boundries. However, squadrons are used to drive even more fine-grained actions against managed entities that share a common function, purpose, or are geographically close.
+
+Squadrons always belong to a fleet, and may belong to a division.
+
+Squadrons represent the "highest priority" when a manager applies customizations or policies, first applying the fleet policies, then the division policies, then finally the squadron policies. Should overlapping customizations or policies be found, the squadron policy overrules both the division and fleet policies.
+
+The end user persona category is responsible for squadron membership, according to organizational requirements.
 
 ### Application Catalog
 
@@ -101,6 +136,14 @@ An Application Catalog is a feature provided by a Workload Fleet Manager, that o
 An application catalog should have role-based access control for multiple personas that will be interacting with the catalog, allowing for fine-grained permissions and visibility.
 
 In addition, a catalog must support common functions for applications, such as creation, updating, and deletion.
+
+## Interfaces and Interoperability
+
+### Application Programming Inteface (API)
+
+An application programming interface is a set of rules that define how software applications can be interacted with, allowing for configruation and consumption of the underlying software.
+
+APIs within Margo are leveraged, and sometimes defined, to allow for interoperability between different supplier's offerings, and for more programatic and managable systems overall.
 
 ## Notes
 - Purchasing and procurement of applications is outside the scope of Margo
