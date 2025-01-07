@@ -33,6 +33,6 @@ There are several reasons why OpenTelemetry was chosen:
 - The OpenTelemetry community project has reusable components such as telemetry [receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver) for Kubernetes, Docker and the host system making integration easier.
 - OpenTelemetry is vendor agnostic.
 
-See the following pages for information about application vendors [publishing observablity data](../app-interoperability/publishing-application-observability-data.md), devices [collection application observability data](../device-interoperability/collecting-application-observability-data.md), and workload orechestration solutions [consuming application observability data](../orchestration/workload/consuming-application-observability-data.md)
+See the following pages for information about application vendors [publishing observablity data](../app-interoperability/publishing-application-observability-data.md), devices [collection application observability data](../device-interoperability/collecting-application-observability-data.md), and workload orechestration solutions [consuming application observability data](../fleet-management/workload/consuming-application-observability-data.md)
 
 > **Decision Needed:** Need to determine which version(s) of the specification are supported
